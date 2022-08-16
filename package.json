@@ -1,0 +1,19 @@
+{
+  "name": "ignisjs",
+  "version": "1.0.0",
+  "description": "IgnisJs is a basic nodejs api-rest start template",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/byluisandres/ignisjs.git"
+  },
+  "author": "Luis Andrés Bolaños Yapo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/byluisandres/ignisjs/issues"
+  },
+  "homepage": "https://github.com/byluisandres/ignisjs#readme"
+}
