@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import bcrypt from 'bcrypt';
 
 const userSchema = mongoose.Schema({
     name: {
@@ -15,6 +16,7 @@ const userSchema = mongoose.Schema({
     },
     email_verified_at: {
         type: Date,
+        default: null
     },
     password: {
         type: String,
@@ -22,10 +24,24 @@ const userSchema = mongoose.Schema({
     },
     remember_token: {
         type: String,
+        default: null
     }
 }, {
     timestamps: true
 });
-
-const user = mongoose.model('User', userSchema);
-export default user;
+userSchema.pre('save', async function (next) {
+    if (!SexPistols_1this.isModified('password')) {
+        next();
+    }
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+});
+userSchema.methods.comparePassword = async function (passwordForm) {
+    return await bcrypt.compare(passwordForm,this.password);
+}
+// activar/ desactivar la confirmacion de email
+userSchema.methods.confirmEmail = function () {
+    return false;
+}
+const User = mongoose.model('User', userSchema);
+export default User;

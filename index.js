@@ -6,6 +6,7 @@ import auth from './routes/auth.js';
 
 
 const app = express();
+app.use(express.json());
 
 // helmet
 app.use(helmet());
